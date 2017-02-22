@@ -34,7 +34,13 @@ RUN	yum -y update \
         php56w-pdo \
 	php56w-intl \
 	php56w-xml \
-        libaio
+        libaio \
+				php56w-dom \
+				 php56w-cli \
+				 php56w-curl \
+				 php56w-mcrypt \
+				 php56w-zip \
+				 php56w-dom
 
 RUN yum clean all
 
@@ -66,7 +72,16 @@ RUN echo "ServerName Server" >> /etc/httpd/conf/httpd.conf
 RUN sed -i 's/AllowOverride None/AllowOverride All/g' /etc/httpd/conf/httpd.conf
 RUN sed -i 's/DocumentRoot "\/var\/www\/html"/DocumentRoot "\/var\/www\/public"/g' /etc/httpd/conf/httpd.conf
 
+#------------------------------
+# composer
+#______________________________
+RUN curl -sS https://getcomposer.org/installer | php
+RUN mv composer.phar /usr/bin/composer
 
+# node
+RUN curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
+RUN yum -y install nodejs
+RUN setenforce 0
 
 
 # -----------------------------------------------------------------------------
