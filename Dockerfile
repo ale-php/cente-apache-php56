@@ -81,7 +81,7 @@ RUN mv composer.phar /usr/bin/composer
 # node
 RUN curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
 RUN yum -y install nodejs
-RUN setenforce 0
+
 
 
 # -----------------------------------------------------------------------------
