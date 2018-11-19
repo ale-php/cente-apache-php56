@@ -24,6 +24,7 @@ RUN	yum -y update \
         php56w \
         php56w-common \
         php56w-devel \
+        php56w-pgsql \
         php56w-mysql \
 	php56w-mbstring \
 	php56w-soap \
