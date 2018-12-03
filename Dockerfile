@@ -15,28 +15,33 @@ RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.
 	&& rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 
 # -----------------------------------------------------------------------------
-# Apache + (PHP 5.6 from https://webtatic.com)
+# Apache + (PHP 7.0from https://webtatic.com)
 # -----------------------------------------------------------------------------
 RUN	yum -y update \
 	&& yum --setopt=tsflags=nodocs -y install \
         httpd \
 	mod_ssl \
-        php56w \
-        php56w-common \
-        php56w-devel \
-        php56w-pgsql \
-        php56w-mysql \
-	php56w-mbstring \
-	php56w-soap \
-	php56w-gd \
-        php56w-ldap \
-        php56w-mssql \
-        php56w-pear \
-        php56w-pdo \
-	php56w-intl \
-	php56w-xml \
+        php70w \
+        php70w-common \
+        php70w-devel \
+        php70w-pgsql \
+        php70w-mysql \
+	php70w-mbstring \
+	php70w-soap \
+	php70w-gd \
+        php70w-ldap \
+        php70w-mssql \
+        php70w-pear \
+        php70w-pdo \
+	php70w-intl \
+	php70w-xml \
         libaio
 
+
+RUN yum install wget -y
+RUN curl -sS https://getcomposer.org/installer | \
+    php -- --install-dir=/usr/bin/ --filename=composer
+    
 RUN yum clean all
 
 # -----------------------------------------------------------------------------
